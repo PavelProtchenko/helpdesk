@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  description: MyText
+  accomplish_time: 2017-12-22 01:10:04
+  author: MyString
+  executor: MyString
+  status: MyString
+
+two:
+  number: 1
+  description: MyText
+  accomplish_time: 2017-12-22 01:10:04
+  author: MyString
+  executor: MyString
+  status: MyString

@@ -1,0 +1,17 @@
+<div class="header">
+  <h1><%= link_to 'Tickets of IT Department' %></h1>
+  <hr />
+</div>
+
+<div class="">
+  <%= link_to 'New ticket', new_ticket_path, class: 'btn btn-success' %>
+  <%= link_to 'Filter', new_ticket_path, class: 'btn btn-default' %>
+</div>
+  <table>
+    <% @tickets.each do |ticket| %>
+    <p><%= ticket.ticket_type %></p>
+    <p><%= ticket.description %></p>
+    <p><%= ticket.created_at %></p>
+  </table>
+    <% end %>
+
