@@ -11,12 +11,27 @@
  * It is generally better to create a new file per style scope.
  *
  *= main
+ *= ticket
  *= footer
+ *= require font-awesome
+ *= require magnific-popup
  *= require_tree .
  *= require_self
  */
 
 link a {
  text-decoration: none;
- color: blue; 
+ color: blue;
+}
+
+.buffer-top {
+  padding-top: 20px;
+}
+
+.table {
+  border: 4px solid #fff;
+}
+.table-bordered > thead > tr > th,
+.table-bordered > tbody > tr > td {
+  border: 4px solid #fff;
 }

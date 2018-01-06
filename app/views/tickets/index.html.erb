@@ -1,17 +1,59 @@
 <div class="header">
-  <h1><%= link_to 'Tickets of IT Department' %></h1>
+  <div class="all-tickets">
+    <h1><%= image_tag('cogwheel', alt: 'Cogwheel') %>
+    <%= link_to 'Tickets of IT Department' %></h1>
+  </div>
+
   <hr />
+
 </div>
 
 <div class="">
-  <%= link_to 'New ticket', new_ticket_path, class: 'btn btn-success' %>
+  <%= link_to 'New ticket', '#form', class: 'btn btn-success popup' %>
   <%= link_to 'Filter', new_ticket_path, class: 'btn btn-default' %>
 </div>
-  <table>
-    <% @tickets.each do |ticket| %>
-    <p><%= ticket.ticket_type %></p>
-    <p><%= ticket.description %></p>
-    <p><%= ticket.created_at %></p>
-  </table>
+
+<div class="buffer-top"><%= paginate @tickets %></div>
+
+<div class="hidden">
+  <form id="form">
+    <input type="text" name="name" placeholder="Name" />
+    <% link_to 'Send', class: 'btn btn-success' %>
+  </form>
+</div>
+<div class="buffer-top">
+  <table class="table table-bordered table-responsive table-striped">
+    <thead>
+      <tr class="info">
+        <th><b>#</b></th>
+        <th><b>Тип заявки</b></th>
+        <th><b>Описание</b></th>
+        <th><b>Создана</b></th>
+        <th><b>Выполнено</b></th>
+        <th><b>Автор</b></th>
+        <th><b>Исполнитель</b></th>
+        <th><b>Статус</b></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.id %></td>
+        <td><%= ticket.ticket_type %></td>
+        <td><%= link_to ticket.description, ticket_path(ticket) %></td>
+        <td><%= ticket.created_at %></td>
+        <td><%= label_tag 'Executed at time' %></td>
+        <td><%= ticket.author %></td>
+        <td>Executor</td>
+        <td><%= ticket.status %></td>
+        <td><%= link_to(fa_icon('eye'), ticket_path(ticket)) %><br />
+            <%= link_to(fa_icon('pencil')) %><br />
+            <%= link_to(fa_icon('trash'), ticket_path(ticket), method: :delete, data: {confirm: 'Are you sure?'}) %>
+        </td>
+      </tr>
+    </tbody>
     <% end %>
+  </table>
+</div>
 
